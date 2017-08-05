@@ -3,6 +3,22 @@ Self-Driving Car Engineer Nanodegree Program
 
 ---
 
+## the effect each of the P, I, D components had in your implementation.
+* P:
+  * controls how fast the syesm reacts to error.
+    If P is High : good for too much varying track. But increases Oscillations due to Noise/
+* I:
+  * Recovery from deviation (when car gets driving near sides instead of center.
+    It can increase Oscillations due to the fact that its some of CTEs.
+* D:
+  * Reduce OScillation /Smoohen.
+    If D is High : It can make car very rigid , specially for bigger turns.
+
+##  how the final hyperparameters were chosen :
+  * Manual Tuning
+    First keeping value of D constant at 2.0, and varying P and I.
+    Once P and I assmed set, Started varying D for better smoothness.
+
 ## Dependencies
 
 * cmake >= 3.5

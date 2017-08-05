@@ -11,21 +11,21 @@ PID::PID() {}
 PID::~PID() {}
 
 void PID::Init(double Kp, double Ki, double Kd) {
-  Kp = Kp;
-  Ki = Ki;
-  Kd = Kd;
+  this->Kp = Kp;
+  this->Ki = Ki;
+  this->Kd = Kd;
+  this->p_error = 0;
+  this->i_error = 0;
+  this->d_error = 0;
 }
 
 void PID::UpdateError(double cte) {
- // d_error is difference from old cte (p_error) to the new cte
-  d_error = (cte - p_error);
-  // p_error gets set to the new cte
+  d_error = cte - p_error;
   p_error = cte;
-  // i_error is the sum of ctes to this point
   i_error += cte;
 }
 
 double PID::TotalError() {
-  return -Kp * p_error - Kd * d_error - Ki * i_error;
+ double total_error = Kp * p_error + Ki * i_error + Kd * d_error;
+ return total_error;
 }
-
